@@ -1,0 +1,23 @@
+<H1>Hello from home template</H1>
+
+{% for user in users %}
+	
+	{% if user.is_superuser %}
+		<H2>hello Admin user {{user.username}}</H2>
+	{% else %}
+		<H2>hello common user {{user.username}}</H2>
+	{% endif %}
+
+
+{% endfor %}
+
+{% for message in messages %}
+	
+	{% if message.user.is_superuser %}
+		<H2> {{message.user}} : {{message.text}}</H2>
+	{% else %}
+		<H2>hello common user message {{message.user}} : {{message.text}}</H2>
+	{% endif %}
+
+
+{% endfor %}

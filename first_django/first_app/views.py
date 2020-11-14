@@ -17,4 +17,4 @@ def start(request):
     b = input("Are you ready to start the program?\n a) yes\n b) no\n\t")
     if b == "yes":
         return HttpResponse(b)
-
+        
