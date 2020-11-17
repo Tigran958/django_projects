@@ -1,0 +1,3 @@
+Django forms, ModelForm
+Django Urls passing an argument
+Django Models  MyModel.objects.get()
