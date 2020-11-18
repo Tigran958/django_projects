@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
 from .models import NewTask
 from .forms import TaskForm
+
 # Create your views here.
 
 
 def home(request):
-    tasks = NewTask.objects.all()
+    tasks = NewTask.objects.all().filter(user=request.user)
 
     content = {'tasks': tasks}
     return render(request, "to_do/home.html", content)
@@ -15,7 +17,9 @@ def new_task(request):
     if request.method == "POST":
         form = TaskForm(request.POST)
         if form.is_valid():
-            form.save()
+            task = form.save(commit=False)
+            task.user = User.objects.get(id=request.user.id)
+            task.save()
 
         return redirect('home')
 

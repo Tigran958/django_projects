@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
 
 STATUS_CHOICE = (
@@ -14,6 +14,7 @@ class NewTask(models.Model):
     description = models.TextField()
     status = models.IntegerField(choices=STATUS_CHOICE)
     date_created = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name

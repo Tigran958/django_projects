@@ -7,3 +7,4 @@ class TaskForm(ModelForm):
     class Meta:
         model = NewTask
         fields = '__all__'
+        exclude = ['user']
