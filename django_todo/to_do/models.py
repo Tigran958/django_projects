@@ -12,7 +12,7 @@ STATUS_CHOICE = (
 class NewTask(models.Model):
     name = models.CharField(max_length=50)
     description = models.TextField()
-    status = models.IntegerField(choices=STATUS_CHOICE)
+    status = models.IntegerField(choices=STATUS_CHOICE, default="0")
     date_created = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
