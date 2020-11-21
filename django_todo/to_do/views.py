@@ -13,7 +13,7 @@ def home(request):
     content = {'tasks': tasks}
     return render(request, "to_do/home.html", content)
 
-
+@login_required(login_url="login")
 def new_task(request):
     if request.method == "POST":
         form = TaskForm(request.POST)
