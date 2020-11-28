@@ -4,7 +4,6 @@ from django.contrib.auth.decorators import login_required
 from .models import NewTask
 from .forms import TaskForm
 
-# Create your views here.
 
 @login_required(login_url="login")
 def home(request):
@@ -12,6 +11,7 @@ def home(request):
 
     content = {'tasks': tasks}
     return render(request, "to_do/home.html", content)
+
 
 @login_required(login_url="login")
 def new_task(request):
@@ -29,12 +29,14 @@ def new_task(request):
 
     return render(request, "to_do/new_task.html", content)
 
-def task_view(request,pk):
+
+def task_view(request, pk):
     task = NewTask.objects.get(id=pk)
     content = {'task': task}
     return render(request, "to_do/task_view.html", content)
 
-def task_update(request,pk):
+
+def task_update(request, pk):
     task = NewTask.objects.get(id=pk)
     if request.method == "POST":
         form = TaskForm(request.POST, instance=task)
@@ -47,7 +49,8 @@ def task_update(request,pk):
     content = {'form': form}
     return render(request, "to_do/task_update.html", content)
 
-def task_delete(request,pk):
+
+def task_delete(request, pk):
     task = NewTask.objects.get(id=pk)
     task.delete()
     return redirect("home")
