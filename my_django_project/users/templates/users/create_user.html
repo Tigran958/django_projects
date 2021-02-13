@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>Create User here!!</h3>
+<h1>Hello  {{request.user}}</h1>
+<form method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+
+    <button type="submit">form submit</button>
+</form>
+<br>
+<br>
+<br>
+
+
+
+<form method="post">
+    {% csrf_token %}
+    <label>username</label>
+    <input type="text" name="user_name">
+    <br>
+    <label>password1</label>
+    <input type="password" name="password1">
+    <br>
+    <label>confirm</label>
+    <input type="password" name="password2">
+    <button type="submit">send to backend</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{% for movie in movies %}
+    <h3>movie name</h3>
+    {{ movie.name }}
+    <h3>movie genre</h3>
+    {{ movie.genre.get_name_display }} -  {{ movie.genre }}
+    <br>
+    {% for actor in movie.actors.all %}
+       {{ actor.name }}
+    <br>
+    {% endfor %}
+    <br>
+
+{% endfor %}
